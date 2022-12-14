@@ -1,0 +1,3 @@
+Make humans vs AI mode.
+Make capture the flag mode.
+Add online multiplayer.
