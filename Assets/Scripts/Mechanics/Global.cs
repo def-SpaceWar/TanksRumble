@@ -1,64 +1,56 @@
 using UnityEngine;
 
-public class Global : MonoBehaviour {
+public class Global : MonoBehaviour
+{
+	#region BulletConstants
 
-    #region BulletConstants
+        public static readonly float BulletKnockback = 5f;
+        public static readonly float BulletExplodeRadius = 0.25f;
+        public static readonly float WaitToCheckBulletSpeed = 0.5f;
 
-    public static readonly float BulletKnockback = 5f;
-    public static readonly float BulletExplodeRadius = 0.25f;
-    public static readonly float WaitToCheckBulletSpeed = 0.5f;
-    public static readonly float MINBulletSpeed = 0.1f;
+        #endregion
 
-    #endregion
+        #region StartUpScreen
 
-    #region StartUpScreen
+        public static readonly float StartUpScreenFallPower = 1000;
 
-    public static readonly float StartUpScreenFallPower = 1000;
+        #endregion
 
-    #endregion
+        #region TankConstants
 
-    #region TankConstants
+        public static readonly float WaitToSetTankNumber = 0.2f;
+        public static readonly float WaitToInitControls = 1f;
 
-    public static readonly float WaitToSetTankNumber = 0.2f;
-    public static readonly float WaitToInitControls = 1f;
+        #endregion
 
-    #endregion
+        public static Global Instance;
 
-    #region ControlConstants
+        #region InspectorConstants
 
-    public static readonly float ControlsTransparency = 1f;
+        public GameObject bigExplosion;
+        public GameObject regExplosion;
+        public GameObject smallExplosion;
 
-    #endregion
+        public GameObject fireball;
+        public GameObject indicator;
 
-    public static Global Instance;
+        #endregion
 
-    #region InspectorConstants
-
-    public GameObject bigExplosion;
-    public GameObject regExplosion;
-    public GameObject smallExplosion;
-
-    public GameObject fireball;
-    public GameObject indicator;
-
-    #endregion
-
-    private void Start()
-    {
-        if (Instance != null)
+        private void Start()
         {
-            DestroySelf();
-            return;
+                if (Instance != null)
+                {
+                        DestroySelf();
+                        return;
+                }
+
+                Instance = this; // Some objects need to be set in inspector.
+                DontDestroyOnLoad(gameObject);
         }
 
-        Instance = this; // Some objects need to be set in inspector.
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void DestroySelf()
-    {
-        Destroy(gameObject);
-        Destroy(this);
-    }
-
+        private void DestroySelf()
+        {
+                Destroy(gameObject);
+                Destroy(this);
+        }
 }
