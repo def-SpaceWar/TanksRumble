@@ -3,18 +3,18 @@ using UnityEngine.UI;
 
 public class PlayButton : MonoBehaviour {
 
-    private Button m_Button;
-    private Text m_Text;
+    Button m_Button;
+    Text m_Text;
 
-    private void Awake()
+    void Start()
     {
         m_Button = GetComponent<Button>();
         m_Text = GetComponentInChildren<Text>();
     }
 
-    private void Update()
+    void Update()
     {
-        var players = 0;
+        int players = 0;
 
         if (PlayerPrefs.GetInt("player1", 1) != 0) players++;
         if (PlayerPrefs.GetInt("player2", 1) != 0) players++;

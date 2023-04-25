@@ -3,10 +3,8 @@ using UnityEngine.Advertisements;
 
 public class AdManager : MonoBehaviour, IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-
         private static AdManager Instance;
 
-        [Header("Unity Ad Settings")]
         public string gameId; // This will be specifically the Android ID as this is targeted towards Android!
         public bool testMode;
 

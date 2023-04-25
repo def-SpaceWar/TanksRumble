@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -53,6 +53,27 @@ public class TankMovementControls : MonoBehaviour, IPointerDownHandler, IPointer
     {
         if (!isInitialized)
             return;
+
+        switch (tankNumber) {
+            case 1:
+                if (Input.GetKeyDown("m")) {
+                    isTouched = true;
+                }
+                if (Input.GetKeyUp("m")) {
+                    isTouched = false;
+                    isLeft = !isLeft;
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown("a")) {
+                    isTouched = true;
+                }
+                if (Input.GetKeyUp("a")) {
+                    isTouched = false;
+                    isLeft = !isLeft;
+                }
+                break;
+        }
 
         if (isTouched)
         {

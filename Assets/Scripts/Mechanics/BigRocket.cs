@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class BigRocket : MonoBehaviour {
@@ -67,6 +67,14 @@ public class BigRocket : MonoBehaviour {
 
     private void DestroySelf()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+        Destroy(GetComponent<Rigidbody2D>());
+        StartCoroutine("ActuallyDestroySelf");
+    }
+
+    private IEnumerator ActuallyDestroySelf() {
+        yield return new WaitForSeconds(15);
         Destroy(gameObject);
         Destroy(this);
     }

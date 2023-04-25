@@ -1,4 +1,4 @@
-﻿using Pathfinding;
+using Pathfinding;
 using UnityEngine;
 
 [RequireComponent(typeof(Tank))]
@@ -154,13 +154,16 @@ public class TankAI : MonoBehaviour
 
         private void ShootIfTarget(RaycastHit2D hitInfo)
         {
-                if (hitInfo.collider.gameObject.GetComponent<TankHealth>() != null)
-                {
-                        ShootIfTank(hitInfo);
-                }
-                else
-                {
-                        ShootIfProjectile(hitInfo);
+                try {
+                        if (hitInfo.collider.gameObject.GetComponent<TankHealth>() != null)
+                        {
+                                ShootIfTank(hitInfo);
+                        }
+                        else
+                        {
+                                ShootIfProjectile(hitInfo);
+                        }
+                } catch {
                 }
         }
 

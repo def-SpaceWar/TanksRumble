@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -49,6 +49,29 @@ public class TankWeaponControls : MonoBehaviour, IPointerDownHandler, IPointerUp
     {
         if (!isInitialized)
             return;
+
+        switch (tankNumber) {
+            case 1:
+                if (Input.GetKeyDown("w")) {
+                    isTouched = true;
+                }
+
+                if (Input.GetKeyUp("w")) {
+                    isTouched = false;
+                    tankWeapon.Shoot();
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown("o")) {
+                    isTouched = true;
+                }
+
+                if (Input.GetKeyUp("o")) {
+                    isTouched = false;
+                    tankWeapon.Shoot();
+                }
+                break;
+        }
 
         if (tankWeapon.jammed)
         {
